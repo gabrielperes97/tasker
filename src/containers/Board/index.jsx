@@ -1,37 +1,64 @@
 import * as React from 'react'
 import TextField from '@mui/material/TextField';
-import { Text, View, StyleSheet } from "react-native";
+import { Fab, Container, SimpleDialog, Box } from '@mui/material';
+import AddIcon from '@mui/icons-material/Add';
 import { useTranslation } from "react-i18next";
+import TaskList from './task_list';
+import Dash from './dash';
+import AddTask from './add_task';
 
-const styles = StyleSheet.create({
+const styles = {
     container: {
-      flex: 1,
-      backgroundColor: '#fff',
-      alignItems: 'center',
-      justifyContent: 'center',
+        flex: 1,
+        alignItems: 'center',
+        justifyContent: 'center',
     },
-  });
+    add_button: {
+        position: 'absolute',
+        margin: 16,
+        right: 0,
+        bottom: 0,
+    },
+    modalView: {
+        position: 'absolute',
+        top: '50%',
+        left: '50%',
+        transform: 'translate(-50%, -50%)',
+        width: 400,
+        bgcolor: 'background.paper',
+        border: '2px solid #000',
+        boxShadow: 24,
+        p: 4,
+    },
+  };
   
 
-const BoardScreen = ({navigation}) => {
+const BoardScreen = ({}) => {
     const { t } = useTranslation();
 
-    const [user, setUser] = React.useState("");
-    const [password, setPassword] = React.useState("");
+    const [openAddTask, setOpenAddTask] = React.useState(false);
+    const handleOpenAddTask = () => setOpenAddTask(true);
+    const handleCloseAddTask = () => setOpenAddTask(false);
+    
+    const [taskList, setTaskList] = React.useState([]);
+    const addTask = (task) => {
+        console.log(task);
+        setTaskList(taskList.concat(task));
+        handleCloseAddTask();
+    }
 
-    return <View style={styles.container}>
-        <Text>Tasker</Text>
-        <TextField  
-            label={t('login.user')}
-            value={user}
-            onChange={(event) => {setUser(event.target.value)}}
+
+    return <Container style={styles.container}>
+        <Dash></Dash>
+        <TaskList taskList={taskList}></TaskList>
+        <Fab color="primary" aria-label="add" style={styles.add_button} onClick={handleOpenAddTask}>
+            <AddIcon />
+        </Fab>
+        <AddTask
+            open={openAddTask}
+            onSelect={addTask}
         />
-        <TextField  
-            label={t('login.password')}
-            value={password}
-            onChange={(event) => {setPassword(event.target.value)}}
-        />
-    </View>
+    </Container>
 }
 
 export default BoardScreen;
