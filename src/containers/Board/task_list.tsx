@@ -11,6 +11,9 @@ const styles = {
         flex: 1,
         alignItems: 'center',
         justifyContent: 'center',
+    },
+    items: {
+        margin: "10px 10px"
     }
   };
 
@@ -22,7 +25,7 @@ const TaskList = (props: TaskListProps) => {
     const { t } = useTranslation();
     const { taskList } = props;
 
-    const taskItems = taskList.map(task => <TaskItem task={task} />)
+    const taskItems = taskList.map(task => <Container style={styles.items}><TaskItem task={task} /></Container>)
 
     return <Container>
         {taskItems}
