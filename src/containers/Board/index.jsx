@@ -57,6 +57,7 @@ const BoardScreen = ({}) => {
         <AddTask
             open={openAddTask}
             onSelect={addTask}
+            onClose={handleCloseAddTask}
         />
     </Container>
 }

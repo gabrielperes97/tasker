@@ -1,6 +1,7 @@
 {
     "add_task": {
         "add": "Adicionar",
+        "add_task": "Adicionar Tarefa",
         "description": "Descrição da tarefa"
     } 
 }
