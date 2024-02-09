@@ -1,7 +1,4 @@
-import * as React from 'react'
-import TextField from '@mui/material/TextField';
-import { Card, Container, Fab } from '@mui/material';
-import AddIcon from '@mui/icons-material/Add';
+import { Container } from '@mui/material';
 import { useTranslation } from "react-i18next";
 import TaskItem from './task_item';
 import Task from '../../models/task'
@@ -18,14 +15,22 @@ const styles = {
   };
 
 export interface TaskListProps {
-    taskList: [Task]
+    taskList: Map<string, Task>;
+    handleRemove: (task: Task) => void;
 }
 
 const TaskList = (props: TaskListProps) => {
     const { t } = useTranslation();
-    const { taskList } = props;
+    const { taskList, handleRemove } = props;
 
-    const taskItems = taskList.map(task => <Container style={styles.items}><TaskItem task={task} /></Container>)
+    const generateOnClickRemove = (task: Task) => {
+        return () => {
+            return handleRemove(task);
+        }
+    };
+    
+
+    const taskItems = Array.from(taskList.entries()).map(([id, task]) => <Container style={styles.items} key={id}><TaskItem task={task} onClickRemove={generateOnClickRemove(task)} /></Container>)
 
     return <Container>
         {taskItems}

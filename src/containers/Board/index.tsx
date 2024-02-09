@@ -1,11 +1,11 @@
 import * as React from 'react'
-import TextField from '@mui/material/TextField';
-import { Fab, Container, SimpleDialog, Box } from '@mui/material';
+import { Fab, Container } from '@mui/material';
 import AddIcon from '@mui/icons-material/Add';
 import { useTranslation } from "react-i18next";
 import TaskList from './task_list';
 import Dash from './dash';
 import AddTask from './add_task';
+import Task from '../../models/task';
 
 const styles = {
     container: {
@@ -33,25 +33,32 @@ const styles = {
   };
   
 
-const BoardScreen = ({}) => {
+const BoardScreen = () => {
     const { t } = useTranslation();
 
     const [openAddTask, setOpenAddTask] = React.useState(false);
     const handleOpenAddTask = () => setOpenAddTask(true);
     const handleCloseAddTask = () => setOpenAddTask(false);
     
-    const [taskList, setTaskList] = React.useState([]);
-    const addTask = (task) => {
+    const [taskList, setTaskList] = React.useState<Map<string, Task>>(new Map<string, Task>());
+    const addTask = (task: Task) => {
         console.log(task);
-        setTaskList(taskList.concat(task));
+        
+        taskList.set(task.id, task);
+        setTaskList(new Map(taskList));
         handleCloseAddTask();
+    }
+
+    const removeTask = (task: Task) => {
+        taskList.delete(task.id);
+        setTaskList(new Map(taskList));
     }
 
 
     return <Container style={styles.container}>
         <Dash></Dash>
-        <TaskList taskList={taskList}></TaskList>
-        <Fab color="primary" aria-label="add" style={styles.add_button} onClick={handleOpenAddTask}>
+        <TaskList taskList={taskList} handleRemove={removeTask}></TaskList>
+        <Fab color="primary" aria-label="add" style={styles.add_button as React.CSSProperties} onClick={handleOpenAddTask}>
             <AddIcon />
         </Fab>
         <AddTask

@@ -1,21 +1,14 @@
 import * as React from 'react'
 import TextField from '@mui/material/TextField';
-import { Box, Card, Fab, Paper, Container, Button, Dialog, DialogTitle, DialogContent, DialogActions } from '@mui/material';
+import { Button, Dialog, DialogTitle, DialogContent, DialogActions } from '@mui/material';
 import { useTranslation } from "react-i18next";
-import { v4 as uuidv4 } from 'uuid';
+import Task from '../../models/task';
 
 export interface AddTaskProps {
     open: boolean;
-    onSelect: (value: object) => void;
+    onSelect: (value: Task) => void;
     onClose: () => void;
 }
-
-const styles = {
-    container: {
-       background_collor: '#fff'
-    }
-};
-  
 
 const AddTask = (props: AddTaskProps) => {
 
@@ -23,10 +16,9 @@ const AddTask = (props: AddTaskProps) => {
     const { onSelect, open, onClose } = props;
 
     const handleSelect = (description: string) => {
-        onSelect({
-            key: uuidv4(),
-            description: description,
-        });
+        onSelect(
+            new Task(description)
+        );
     };
 
     return (
