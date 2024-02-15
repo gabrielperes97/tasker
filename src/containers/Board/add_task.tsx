@@ -46,6 +46,7 @@ const AddTask = (props: AddTaskProps) => {
                     variant="standard"
                     id="description" 
                     name="description"
+                    autoComplete='off'
                     label={t('board.add_task.description')}
                 />
             </DialogContent>

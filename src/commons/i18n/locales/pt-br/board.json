@@ -3,5 +3,11 @@
         "add": "Adicionar",
         "add_task": "Adicionar Tarefa",
         "description": "Descrição da tarefa"
-    } 
+    },
+    "dash": {
+        "task_not_selected": "Nenhuma tarefa selecionada"
+    },
+    "task_item": {
+        "total_time_spend": "Tempo gasto"
+    }
 }

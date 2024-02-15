@@ -3,5 +3,11 @@
         "add": "Add",
         "add_task": "Add Task",
         "description": "Task description"
-    } 
+    },
+    "dash": {
+        "task_not_selected": "Task not selected"
+    },
+    "task_item": {
+        "total_time_spend": "Time spend"
+    }
 }
