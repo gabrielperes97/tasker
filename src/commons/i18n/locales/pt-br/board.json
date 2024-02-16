@@ -8,6 +8,7 @@
         "task_not_selected": "Nenhuma tarefa selecionada"
     },
     "task_item": {
-        "total_time_spend": "Tempo gasto"
+        "total_time_spend": "Tempo gasto",
+        "actual_time_spend": "Tempo atual gasto"
     }
 }

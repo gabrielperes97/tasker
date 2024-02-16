@@ -8,6 +8,7 @@
         "task_not_selected": "Task not selected"
     },
     "task_item": {
-        "total_time_spend": "Time spend"
+        "total_time_spend": "Time spend",
+        "actual_time_spend": "Actual time spend"
     }
 }
