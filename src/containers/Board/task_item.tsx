@@ -40,7 +40,7 @@ const ActiveTaskItem = (props: TaskProps) => {
             setActualTimeSpend(task.calculateActualTimeSpend());
         });
         return () => clearInterval(intervalId);
-    }, []);
+    });
 
 
     return <Paper elevation={2} style={styles.container_active}>

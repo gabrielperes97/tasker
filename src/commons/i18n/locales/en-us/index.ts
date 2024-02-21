@@ -1,7 +1,9 @@
 import login from './login.json'
 import board from './board.json'
 
-export default {
+const enUs = {
     login,
     board,
 }
+
+export default enUs;
