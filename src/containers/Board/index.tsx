@@ -1,9 +1,7 @@
 import * as React from 'react'
 import { Fab, Container, Typography } from '@mui/material';
 import AddIcon from '@mui/icons-material/Add';
-import { useTranslation } from "react-i18next";
 import TaskList from './task_list';
-import Dash from './dash';
 import AddTask from './add_task';
 import Task from '../../models/task';
 
@@ -34,8 +32,6 @@ const styles = {
   
 
 const BoardScreen = () => {
-    const { t } = useTranslation();
-
     const [openAddTask, setOpenAddTask] = React.useState(false);
     const [activeTask, setActiveTask] = React.useState<Task|null>(null);
     const handleOpenAddTask = () => setOpenAddTask(true);

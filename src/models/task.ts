@@ -22,7 +22,6 @@ export default class Task {
 
     public disableTask() {
         if (this.datetimeTaskActivate) {
-            let now = new Date();
             this.active = false;
             this.secondsSpend += moment().diff(this.datetimeTaskActivate, 'seconds')
             this.datetimeTaskActivate = undefined;

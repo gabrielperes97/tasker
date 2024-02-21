@@ -1,6 +1,5 @@
 import { Grid, IconButton, Paper } from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';
-import CheckIcon from '@mui/icons-material/Check';
 import { useTranslation } from "react-i18next";
 import Task from '../../models/task';
 import { useEffect, useState } from 'react';
@@ -30,7 +29,7 @@ const styles = {
 const ActiveTaskItem = (props: TaskProps) => {
     
     const { t } = useTranslation();
-    const { task, onClickRemove, onClickActive } = props;
+    const { task, onClickRemove } = props;
     
     const [ totalTimeSpend, setTotalTimeSpend ] = useState<string>(task.calculateTotalTimeSpend());
     const [ actualTimeSpend, setActualTimeSpend ] = useState<string>(task.calculateActualTimeSpend());

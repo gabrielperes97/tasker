@@ -1,5 +1,4 @@
 import { Container } from '@mui/material';
-import { useTranslation } from "react-i18next";
 import {ActiveTaskItem, InativeTaskItem} from './task_item';
 import Task from '../../models/task'
 
@@ -21,7 +20,6 @@ export interface TaskListProps {
 }
 
 const TaskList = (props: TaskListProps) => {
-    const { t } = useTranslation();
     const { taskList, handleRemove, handleSelect } = props;
 
     const generateOnClickRemove = (task: Task) => {
